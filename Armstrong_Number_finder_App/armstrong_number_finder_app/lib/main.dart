@@ -102,9 +102,7 @@ class _ArmstrongNumberScreenState extends State<ArmstrongNumberScreen> {
   void _findNextNumber() async { // Funktion enthält asynchronen Code
     setState(() { // UI wird aktualisiert
       _isRunning = true; // Setzen des Flags, dass der Algorithmus läuft
-    });
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    });   
 
     final int number = int.tryParse(_controller.text) ?? 0; // Eingegebene Zahl abrufen und in int umwandeln
     _nextArmstrong = await findNextNum(number + 1); // Warten bis nächste Armstrong-Zahl zu finden
