@@ -117,7 +117,7 @@ class _ArmstrongNumberScreenState extends State<ArmstrongNumberScreen> {
 
   Future<int> findNextNum(int number) async { // Funktion gibt zukünftiges Ergebnis von Typ 'int' und enthält asynchronen Code
     if (isArmstrong(number) == false) { // Überprüfen, ob die Zahl keine Armstrong-Zahl ist
-      await Future.delayed(Duration(milliseconds: 100)); // Eine Verzögerung hinzufügen
+      await Future.delayed(Duration(milliseconds: 1)); // Eine Verzögerung hinzufügen
       return findNextNum(number + 1); // Rekursiver Aufruf, um die nächste Zahl zu finden
     } else {
       return number; // Die Zahl ist eine Armstrong-Zahl, also zurückgeben
