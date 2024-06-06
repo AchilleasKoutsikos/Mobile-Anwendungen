@@ -14,7 +14,7 @@ class TicTacToeBoard extends StatelessWidget {
         width: 204,
         height: 204,
         child: CustomPaint(
-          painter: TicTacToePainter(), // CustomPainter to draw lines
+          painter: TicTacToePainter(), // Zeichnet die Linien des Spielfelds
           child: Column(
             children: List.generate(3, (row) {
               return Expanded(
@@ -23,12 +23,16 @@ class TicTacToeBoard extends StatelessWidget {
                     return Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          onCellTap(row, col);
+                          onCellTap(
+                              row, col); // Handhabt das Antippen der Zellen
                         },
                         child: Container(
-                          color: Colors.transparent, // Make cell background transparent
+                          color: Colors
+                              .transparent, // Macht den Zellhintergrund transparent
                           child: Center(
-                            child: TicTacToeCell(value: board[row][col]),
+                            child: TicTacToeCell(
+                                value: board[row]
+                                    [col]), // Zeigt den Wert der Zelle an
                           ),
                         ),
                       ),
@@ -48,25 +52,27 @@ class TicTacToePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black
-      ..strokeWidth = 4;
+      ..color = Colors.black // Farbe der Linien
+      ..strokeWidth = 4; // Dicke der Linien
 
     double thirdWidth = size.width / 3;
     double thirdHeight = size.height / 3;
 
-    // Drawing vertical lines
+    // Zeichnet die vertikalen Linien
     for (var i = 1; i < 3; i++) {
-      canvas.drawLine(Offset(thirdWidth * i, 0), Offset(thirdWidth * i, size.height), paint);
+      canvas.drawLine(Offset(thirdWidth * i, 0),
+          Offset(thirdWidth * i, size.height), paint);
     }
 
-    // Drawing horizontal lines
+    // Zeichnet die horizontalen Linien
     for (var i = 1; i < 3; i++) {
-      canvas.drawLine(Offset(0, thirdHeight * i), Offset(size.width, thirdHeight * i), paint);
+      canvas.drawLine(Offset(0, thirdHeight * i),
+          Offset(size.width, thirdHeight * i), paint);
     }
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+    return false; // Verhindert das erneute Zeichnen, wenn keine Änderung vorliegt
   }
 }

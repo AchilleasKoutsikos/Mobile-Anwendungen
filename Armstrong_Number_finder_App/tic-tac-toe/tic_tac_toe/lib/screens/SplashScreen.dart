@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,6 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
     _navigateToHome();
   }
 
+  // Diese Methode navigiert nach einer Verzögerung von 3 Sekunden zum Home-Bildschirm.
   _navigateToHome() async {
     await Future.delayed(Duration(seconds: 3));
     Navigator.pushReplacementNamed(context, '/home');
@@ -22,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        // Container, der das Hintergrundbild und den Titel enthält
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -30,6 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           child: Center(
+            // Titel des Spiels
             child: Text(
               'Tic-Tac-Toe',
               style: TextStyle(

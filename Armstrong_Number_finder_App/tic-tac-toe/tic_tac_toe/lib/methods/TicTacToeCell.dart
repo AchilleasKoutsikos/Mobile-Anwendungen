@@ -12,7 +12,7 @@ class TicTacToeCell extends StatelessWidget {
     final symbolColorProvider = Provider.of<SymbolColorProvider>(context);
 
     return Center(
-      child: _buildCellContent(value, symbolColorProvider),
+      child: _buildCellContent(value, symbolColorProvider), // Baut den Inhalt der Zelle basierend auf dem Wert und der Symbolfarbe
     );
   }
 
@@ -21,10 +21,10 @@ class TicTacToeCell extends StatelessWidget {
     final oColor = symbolColorProvider.oColor;
 
     if (value == 'X') {
-      return Icon(Icons.close, color: xColor, size: 36);
+      return Icon(Icons.close, color: xColor, size: 36); // Zeigt ein X-Symbol mit der entsprechenden Farbe und Größe
     } else if (value == 'O') {
-      return Icon(Icons.panorama_fish_eye, color: oColor, size: 36);
+      return Icon(Icons.panorama_fish_eye, color: oColor, size: 36); // Zeigt ein O-Symbol mit der entsprechenden Farbe und Größe
     }
-    return const SizedBox.shrink();
+    return const SizedBox.shrink(); // Leerer Platzhalter, wenn kein Symbol gesetzt ist
   }
 }

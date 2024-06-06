@@ -10,9 +10,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final HomeScreenLogic _logic = HomeScreenLogic();
-  int _selectedIndex = 0;
+  final HomeScreenLogic _logic = HomeScreenLogic(); // Instanz der Logikklasse
+  int _selectedIndex = 0; // Für die Navigationselemente
 
+  // Funktion zur Navigation bei Tab-Wechsel
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -32,7 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final symbolColorProvider = Provider.of<SymbolColorProvider>(context);
+    final symbolColorProvider =
+        Provider.of<SymbolColorProvider>(context); // Farben der Symbole
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -50,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Stack(
         children: [
+          // Hintergrundbild
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -80,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(height: 20),
+                    // Eingabefelder für Spielernamen, wenn das Spiel noch nicht gestartet ist
                     if (!_logic.gameStarted) ...[
                       SizedBox(
                         width: 280,
@@ -138,6 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(height: 20),
                     ],
+                    // Start-Button, wenn das Spiel noch nicht gestartet ist
                     Visibility(
                       visible: !_logic.gameStarted,
                       child: ElevatedButton(
@@ -150,6 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Text('Start'),
                       ),
                     ),
+                    // Anzeigen der Spielernamen und des Spielfelds, wenn das Spiel gestartet ist
                     if (_logic.gameStarted) ...[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -183,6 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       SizedBox(height: 20),
+                      // TicTacToeBoard Widget
                       TicTacToeBoard(
                         board: _logic.board,
                         onCellTap: (row, col) {
@@ -191,8 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               col,
                               setState,
                               _logic.checkWinner,
-                              (winner) => _logic.showWinnerDialog(
-                                  context, winner, setState));
+                              _logic.showWinnerDialog,
+                              context);
                         },
                       ),
                     ],
@@ -203,6 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      // BottomNavigationBar zur Navigation zwischen verschiedenen Seiten
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

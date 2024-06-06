@@ -23,6 +23,7 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
+          // Hintergrundbild
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -31,12 +32,15 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
           ),
+          // Zentrierte Inhalte
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Farbauswahl für 'X'
                 _buildColorSelection('X', symbolColorProvider.xColor, symbolColorProvider.changeXColor),
                 SizedBox(height: 20),
+                // Farbauswahl für 'O'
                 _buildColorSelection('O', symbolColorProvider.oColor, symbolColorProvider.changeOColor),
               ],
             ),
@@ -58,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
             label: 'Settings',
           ),
         ],
-        currentIndex: 2, // Settings screen index
+        currentIndex: 2, // Einstellungen Bildschirm Index
         selectedItemColor: Color.fromARGB(255, 163, 92, 21),
         onTap: (index) {
           switch (index) {
@@ -77,6 +81,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
+  // Methode zum Erstellen der Farbauswahl
   Widget _buildColorSelection(String symbol, Color color, void Function(Color) onChanged) {
     return Container(
       width: 150,
@@ -91,11 +96,13 @@ class SettingsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // Symbolanzeige ('X' oder 'O')
               Icon(
                 symbol == 'X' ? Icons.close : Icons.panorama_fish_eye,
                 color: color,
                 size: 50,
               ),
+              // Dropdown-Menü zur Farbauswahl
               DropdownButton<Color>(
                 value: color,
                 onChanged: (Color? newColor) {
